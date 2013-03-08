@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- Michelle Kang, copyright 2013 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+
+		<title> BuzzME </title>
+
+			<style type="text/css">
+				body {
+					background-color:#00ccff; 
+					color: #000000;
+					text-align: center;
+					font-family: 'Open Sans', sans-serif; 
+					font-weight: 300;
+				}
+
+				#headline {
+					position: relative;
+					background-color: #ccffff;
+					padding: 10px;
+					width: 90%;
+					font-size: 35px;
+					font-weight: 400;
+					-webkit-border-radius: 5px;
+					-moz-border-radius: 5px;
+					border-radius: 7px;
+				}	
+
+				.submissionform {
+					position: relative;
+					background-color: rgba(204,255,255,0.8);
+					padding: 10px;
+					width: 70%;
+					margin: 0px auto;
+					font-family: 'Open Sans', sans-serif; 
+					font-size: 50px;
+					font-weight: 300;	
+					-webkit-border-radius: 5px;
+					-moz-border-radius: 5px;
+					border-radius: 7px;
+				}
+
+				.schoolheadline {
+					position: relative;
+					font-family: 'Open Sans', sans-serif;
+					font-size: 80px;
+					font-weight: 400;
+				}
+
+
+				img {
+					max-width: 20%;
+				}
+
+			</style>
+
+
+<!-- SCRIPT -->
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+
+	   $(document).ready(function() {
+			$("#headline").width(($(document).width());
+		});
+
+		$(window).resize(function() {
+    		$("#submissionform").hide(); 
+			$("#submissionform").width(($(document).width()));
+			$("#submissionform").css('left',200);
+			$("#submissionform").height($(document).height());
+			$("#submissionform").show();
+
+			$("#headline").hide(); 
+			$("#headline").width(($(document).width()));
+			$("#headline").css('left',200);
+			$("#headline").height($(document).height());
+			$("#headline").show();
+		});
+
+	</script>
+
+<!-- END OF SCRIPT -->
+
+	</head>
+
+
+	<body>
+
+		<center><img src="public/Logo 1.png"></center>
+
+		<div id="headline">
+			Thanks for your entry!
+		</div>
+
+		<div class="submissionform">
+			<form method="post" action="/">
+
+				<input class="topfields" type="text" name="school" placeholder="Where you from, stranger?">		
+
+				<input class="topfields" type="text" name="target" placeholder="Who are you complimenting?"/>
+
+				<p>
+
+				<textarea class="bottomfields" type="text" name="message" placeholder="What about 'em?"/></textarea>
+				
+				<p>
+
+				<input class="button" type="submit" value="SHARE!" />
+
+			</form>
+		</div>
+
+		<div class="schoolheadline">
+			Rubbed @ <%= @humanSchoolName %>
+		</div>
+
+		
+
+	</body>
+
+</html>

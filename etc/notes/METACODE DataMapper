@@ -1,0 +1,85 @@
+METAPROGRAMMING
+-programming code that makes it so you dont have to write code
+
+BOOK: PHP5 Objects Patterns and Practice
+
+ActiveRecord is a thing
+
+BILL HIXS comedian
+
+require 'models/users.rb'
+
+class User
+
+def new
+def find
+def update
+delete
+
+RUBY MONKEY PATCHING
+
+class DataMapper <-- its a design pattern that constructs sql for me
+def find
+	config --> "SELECT * from users"
+
+User < DataMapper
+def config 
+	{table name: users}
+end
+
+sqlzoo.net
+
+
+DATAMAPPER
+concept of raw and modified
+@raw - "storeing whats coming out of database" what comes out of database {id:6, name:"foo"}
+@modified - "storeing the dirty state of what is to be saved"
+			 what comes in from user (sometimes called dirty) {}
+
+user.id //returns 6
+
+DIRTY STATE
+there is some magic that is the solution to not needing get/set methods
+lets call it: 
+def magic_get(k)
+	if method_exists()
+		
+		return k
+	return @modified[k] || row[k];
+	
+end
+
+def magic_set(k, v)
+	@modified[k] = v;
+end
+
+SAVEING
+def save
+	@modified.each
+	
+do a ruby merge to commit @modified to @raw
+
+with string interpolation this is creating sql code (could validate too)
+
+Lets say when i output a name I want it upper case:
+OR Unix timestamp converted to a friendly looking timestamp
+
+
+	
+def get_name
+	return name.capitalize
+end
+
+AND THEN do set		
+
+____
+
+User < DataMapper
+
+	def validate_name
+		if name.match/[^A-Za-z]/ OR /\W/
+			return false or "cannot contain letters"
+
+
+
+	

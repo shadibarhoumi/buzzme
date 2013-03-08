@@ -1,0 +1,19 @@
+# general
+
+1. set up git and github accounts, get team onboard with version control and commits
+
+# features
+
+1. integration as a facebook app?
+2. post to actual facebook compliments pages
+3. have users to login with facebook for notifications
+
+# frontend
+
+
+# backend
+
+0. remember that the Comment has :body and Message has :body (not comment and message)
+1. finish rewriting model with DataMapper
+2. implement logic for choosing routes when school name is entered
+3. validation of forms

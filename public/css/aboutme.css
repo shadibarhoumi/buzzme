@@ -1,0 +1,65 @@
+body {
+	background-image: url('/textures/beetexture.png');
+    background-attachment: fixed;
+	font-family: 'Open Sans', sans-serif; 
+	font-weight: 300;
+	text-align: center;
+}
+p {
+	padding-bottom: 10px;
+}
+
+.pic {
+	width: 15%;
+	min-width: 150px;
+	height: 20%;
+	padding: 0.2%;
+}
+
+h1 {
+	padding-top: 55px;
+}
+
+.pic-well {
+	padding-bottom: 10px;
+	padding-top: 40px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 90%;
+	background-image: -webkit-linear-gradient(top, #FFB146, #FF9E18);
+	background-image: -moz-linear-gradient(top, #FFB146, #FF9E18);
+}
+
+.logo {
+	position: fixed;
+	right: 15px; 
+	top: 45px; 
+	width: 110px; 
+	height: 138px;
+}
+
+#navigation {
+    position: fixed;
+    width: 100%;
+    padding: 0px;
+    height: 35px;
+    top: 0px;
+    background-color: #5EC4CD;
+    border-color: black;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-image: -webkit-linear-gradient(top, #FF9E18, #FFB146);
+    background-image: -moz-linear-gradient(top, #FF9E18, #FFB146);
+}
+
+.nav-pills > li > a:hover {
+    background-image: -webkit-linear-gradient(top, #FFB146, #FF9E18);
+    background-image: -moz-linear-gradient(top, #FFB146, #FF9E18);
+}
+
+.nav-pills {
+    color: #85898B;
+    background-color: black;
+    padding: 3px;
+}

@@ -1,0 +1,7 @@
+body {
+    background-color:#00ccff; 
+    /* background-color: #fff;*/
+    color: #000000;
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 300;
+    }
