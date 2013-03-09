@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'data_mapper'
 require './RubMeModel'
 
 enable :sessions
@@ -49,7 +48,7 @@ post "/" do
 	# if school isn't in database (school_id array is empty)
 	# take user to /createschool
 	#schools = db.execute("SELECT * FROM schools WHERE schools.name = ?", school_name)
-	schools = schools.all(name: school_name)
+	schools = School.all(name: school_name)
 	if schools.length == 1
 		# if school exists and there's only one
 		school = schools.first
@@ -194,32 +193,23 @@ get "/about" do
 	erb File.read("erb/aboutme.erb")
 end
 
-# get "/like/:message_id" do
-# 	message = db.execute("SELECT messages.id, messages.message, messages.likes, schools.url_name FROM
-# 		messages JOIN schools ON schools.id = messages.school_id
-# 		WHERE messages.id = ?", params["message_id"]).first
-# 	puts "message: " + message["message"] + "id: " + message["id"].to_s
-# 	puts "inspected message: " + message.inspect
-# 	db.execute("UPDATE messages SET likes = ? WHERE messages.id = ?", message["likes"]+1, message["id"])
-# 	redirect to("/#{message["url_name"]}/recent")
-# end
+get "/like/:message_id" do
+	message = Message.get(params["message_id"])
 
+	if !message.nil?
+		# if message exists, increment likes by 1 [update() saves automatically]
+		message.update(likes: message.likes + 1)
+	else
+		erb File.read("erb/message_not_found.erb")
+	end
 
-# get "/test" do
-# 	school_arr = []
-# 	schools = db.execute("SELECT schools.name FROM schools WHERE 1").each { |school| school_arr.push(school["name"]) }
-# 	puts "SCHOOLS ARRAY: " + school_arr.inspect
-# end
+	# TODO: provide return url for redirection
 
-# get "/gotoschool" do
-# 	school = params["school"].gsub!(" ", "")
-# 	puts "GETTING TO GO TO SCHOOL OMG THIS IS SCHOOL: " + params["school"]
-# 	redirect to("/#{school}/recent")
-# end
-
-# post "/gotoschool/:school" do
-# 	school = params["school"].gsub!(" ", "")
-# 	puts "POSTING TO GO TO SCHOOL OMG THIS IS SCHOOL: " + params["school"]
-	
-# 	redirect to("/#{school}/recent")
-# end
+	# message = db.execute("SELECT messages.id, messages.message, messages.likes, schools.url_name FROM
+	# 	messages JOIN schools ON schools.id = messages.school_id
+	# 	WHERE messages.id = ?", params["message_id"]).first
+	#puts "message: " + message["message"] + "id: " + message["id"].to_s
+	#puts "inspected message: " + message.inspect
+	#db.execute("UPDATE messages SET likes = ? WHERE messages.id = ?", message["likes"]+1, message["id"])
+	#redirect to("/#{message["url_name"]}/recent")
+end

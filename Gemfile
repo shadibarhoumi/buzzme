@@ -5,6 +5,7 @@ gem "sinatra"
 # datamapper gems
 gem "data_mapper"
 gem "dm-sqlite-adapter"
+gem "dm-adjust"
 
 =begin
 

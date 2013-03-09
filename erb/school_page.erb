@@ -28,9 +28,10 @@
 </div>
 
 <!-- JQuery Script -->
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- script to make ajax call to '/like/messageId' when like button is clicked -->
+<script type="text/javascript">
     $(".like_button").click(function() {
         var messageid = $(this).data("messageid");
         $.get("/like/" + messageid);
@@ -39,7 +40,7 @@
 
 <!-- School Name -->
 
-<div class="school span8 offset1"><h1><%=@school["name"]%></h1></div>
+<div class="school span8 offset1"><h1><%= @school.name %></h1></div>
 
 <!-- Grid: Two Columns -->
 <div class="container-fluid">
@@ -49,16 +50,14 @@
             <% @messages.each do |message| %>
                 <div class="well message row">
                     Dear <span class="target-name">
-                        <a href="#">
-                        <%=message["target_name"]%>
-                        </a>
+                        <a href="#"><%= message.target.name %></a>
                     </span>,
 
-                    <span class="message-text"> <%=message["message"]%></span>
+                    <span class="message-text"> <%= message.body %></span>
 
                     <div class="message-controls">
-                        <%= get_formatted_timestamp(message["timestamp"]) %> | <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
-                        Buzz Up! (<%=message["likes"]%>)</a> | <a>Comment</a> | <a>Abuse</a>
+                        <%= format_timestamp(message.created_at) %> | <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
+                        Buzz Up! (<%= message.likes %>)</a> | <a>Comment</a> | <a>Abuse</a>
                     </div>
                 </div>
             <%end%>

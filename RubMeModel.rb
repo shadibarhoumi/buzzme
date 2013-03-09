@@ -1,5 +1,6 @@
 require 'dm-core'
 require 'data_mapper'
+require 'dm-adjust'
 
 DataMapper.setup(:default, "sqlite://#{Dir.pwd}/development.db")
 
