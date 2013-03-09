@@ -17,3 +17,4 @@
 1. finish rewriting model with DataMapper
 2. implement logic for choosing routes when school name is entered
 3. validation of forms
+4. use config file for db names, etc

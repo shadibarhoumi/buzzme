@@ -1,8 +1,7 @@
 require 'dm-core'
+require 'data_mapper'
 
-# DataMapper.setup(:default, "sqlite://#{Dir.pwd}/development-dm.sqlite")
-# DataMapper.finalize
-# DataMapper.auto_upgrade!
+DataMapper.setup(:default, "sqlite://#{Dir.pwd}/development.db")
 
 class Target
 	include DataMapper::Resource
@@ -24,7 +23,7 @@ class Message
 	property :created_at, 	DateTime
 
 	property :body, Text, required: true
-	property :likes, Integer
+	property :likes, Integer, default: 0
 
 	has n, :comments
 
@@ -38,7 +37,7 @@ class Comment
 	property :id, Serial
 	property :created_at, DateTime
 
-	property :body, Text, required: true
+	property :body, Text, required: true, length: 10..500
 
 	belongs_to :message
 end
@@ -54,3 +53,6 @@ class School
 	has n, :targets
 	has n, :messages
 end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!

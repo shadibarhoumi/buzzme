@@ -4,11 +4,8 @@ require './RubMeModel'
 
 enable :sessions
 
-database_file = settings.environment.to_s + "-dm.sqlite"
-
-DataMapper.setup(:default, "sqlite:///home/shadi/Dropbox/00.shares/rubme/#{database_file}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
+# database file not used here, going to be set in ./config
+database_file = settings.environment.to_s + ".db"
 
 # helper methods
 helpers do
@@ -24,8 +21,8 @@ helpers do
 		string.split(' ').each{|word| word.capitalize!}.join(' ')
 	end
 
-	def get_formatted_timestamp(timestamp)
-		Time.at(timestamp).strftime("On %B %e, %Y at %l:%M%P")
+	def format_timestamp(datetime)
+		datetime.strftime("On %B %e, %Y at %l:%M%P")
 	end
 end
 
@@ -51,41 +48,52 @@ post "/" do
 	
 	# if school isn't in database (school_id array is empty)
 	# take user to /createschool
-	schools = db.execute("SELECT * FROM schools WHERE schools.name = ?", school_name)
+	#schools = db.execute("SELECT * FROM schools WHERE schools.name = ?", school_name)
+	schools = schools.all(name: school_name)
 	if schools.length == 1
 		# if school exists and there's only one
-		# get single school hash out of array
 		school = schools.first
-		# select target, matching target name and school id
-		target = db.execute("SELECT * FROM targets
-									WHERE targets.name = ?
-									AND targets.school_id = ?",
-									target_name, school["id"]).first
-		if target.nil?	
-			# target name must be unique within school, so insert with school_id
-			db.execute("INSERT INTO targets (name, school_id) VALUES(?, ?)", target_name, school["id"])
-			# run select statement again to get the new target out of the database
-			target = db.execute("SELECT * FROM targets
-									WHERE targets.name = ?
-									AND targets.school_id = ?",
-									target_name, school["id"]).first
-		end
+		
+		# find first target matching name and school, or create new one
+		target = Target.first_or_create(name: target_name, school: school)
 
-		# get timestamp as seconds since epoch
-		timestamp = Time.now.to_i
+		# ALL THIS CODE GOES AWAY!
+		# target = db.execute("SELECT * FROM targets
+		# 							WHERE targets.name = ?
+		# 							AND targets.school_id = ?",
+		# 							target_name, school["id"]).first
+		# if target.nil?	
+		# 	# target name must be unique within school, so insert with school_id
+		# 	db.execute("INSERT INTO targets (name, school_id) VALUES(?, ?)",
+		# 		target_name, school["id"])
+		# 	# run select statement again to get the new target out of the database
+		# 	target = db.execute("SELECT * FROM targets
+		# 							WHERE targets.name = ?
+		# 							AND targets.school_id = ?",
+		# 							target_name, school["id"]).first
+		# end
+
+		# # get timestamp as seconds since epoch
+		# TIMESTAMP TAKEN CARE OF IN DATAMAPPER BY DM-TIMESTAMPS MAGIC
+		# timestamp = Time.now.to_i
+
+		# TODO: validate that message is not empty...
+		Message.create(body: params["message"], target: target, school: school)
 
 		# insert message into messages table
-		db.execute("INSERT INTO messages
-					(target_id, school_id, message, timestamp, likes)
-					VALUES (?, ?, ?, ?, ?)", target["id"], school["id"], params["message"], timestamp, 0)
+		# db.execute("INSERT INTO messages
+		# 			(target_id, school_id, message, timestamp, likes)
+		# 			VALUES (?, ?, ?, ?, ?)", target["id"], school["id"], params["message"], timestamp, 0)
 		
 		# redirect to school's page
 		redirect to("/school/#{school["id"]}/recent")
+
 	elsif schools.empty? || schools.length > 1 
-		# redirect to search of schools with query string if school doesn't exist or there are multiple schools
+		# redirect to search of schools with query string
+		# if school doesn't exist or there are multiple schools
 		# session["target"] = target_name
 		# session["message"] = 
-		erb File.read("erb/gonna_finna.erb")
+		redirect to("/create/school")
 	end
 
 
@@ -99,65 +107,92 @@ end
 
 post "/create/school" do
 	school_name = titlecase(params["school"])
-	db.execute("INSERT INTO schools (name, zipcode) VALUES(?, ?)",
-		school_name, params["zipcode"])
-	school = db.execute("SELECT * FROM schools WHERE name = ? AND zipcode = ?",
-		school_name, params["zipcode"]).first
+
+	school = School.create(name: school_name, zipcode: params["zipcode"])
+
+	# db.execute("INSERT INTO schools (name, zipcode) VALUES(?, ?)",
+	# 	school_name, params["zipcode"])
+
+	# school = db.execute("SELECT * FROM schools WHERE name = ? AND zipcode = ?",
+	# 	school_name, params["zipcode"]).first
 	# redirect to school's recent feed
-	redirect to("/school/#{school["id"]}/recent")
+	redirect to("/school/#{school.id}/recent")
 end
 
 get "/school/:school_id/recent" do
-	@school = db.execute("SELECT * FROM
-		schools WHERE schools.id = ?", params["school_id"]).first
+	
+	@school = School.get(params["school_id"])
 
-	if !@school.empty? # if school is not empty
+	# @school = db.execute("SELECT * FROM
+	# 	schools WHERE schools.id = ?", params["school_id"]).first
+
+	if !@school.nil? # if school is not nil
 		# the left outer join returns rows on the left even if they don't match any comments on the right
-		@messages = db.execute("SELECT messages.id, messages.message, messages.timestamp, messages.likes,
-								targets.name target_name, schools.name school_name
-								FROM messages 
-								JOIN targets ON targets.id = messages.target_id
-								JOIN schools ON schools.id = messages.school_id
-								LEFT OUTER JOIN comments ON comments.message_id = messages.id
-								WHERE schools.id = ?
-								ORDER BY messages.timestamp DESC", params["school_id"])
+		# @messages = db.execute("SELECT messages.id, messages.message, messages.timestamp, messages.likes,
+		# 						targets.name target_name, schools.name school_name
+		# 						FROM messages 
+		# 						JOIN targets ON targets.id = messages.target_id
+		# 						JOIN schools ON schools.id = messages.school_id
+		# 						LEFT OUTER JOIN comments ON comments.message_id = messages.id
+		# 						WHERE schools.id = ?
+		# 						ORDER BY messages.timestamp DESC", params["school_id"])
+	
+		# use :order to specify descending timestamp order
+		@messages = Message.all(school: @school, order: [:created_at.desc])
+
 		erb File.read("erb/school_page.erb")
 	else
-		# otherwise, id was invalid!
+		# otherwise, school is nil and it isn't in database so id is invalid
 		erb File.read("erb/school_not_found.erb")
 	end
 
 end
 
 get "/school/:school_id/trending" do
-	@school = db.execute("SELECT * FROM
-		schools WHERE schools.id = ?", params["school_id"]).first
+	@school = School.get(params["school_id"])
 
-	if !@school.empty? # if school is not empty
-		# JOIN comments ON comments.message_id = messages.id
-		@messages = db.execute("SELECT messages.id, messages.message, messages.timestamp, messages.likes,
-								targets.name target_name, schools.name school_name
-								FROM messages 
-								JOIN targets ON targets.id = messages.target_id
-								JOIN schools ON schools.id = messages.school_id
-								WHERE schools.id = ?
-								ORDER BY messages.likes DESC", params["school_id"])
+	# @school = db.execute("SELECT * FROM
+	# 	schools WHERE schools.id = ?", params["school_id"]).first
+
+	if !@school.nil? # if school is not nil
+		# the left outer join returns rows on the left even if they don't match any comments on the right
+		# @messages = db.execute("SELECT messages.id, messages.message, messages.timestamp, messages.likes,
+		# 						targets.name target_name, schools.name school_name
+		# 						FROM messages 
+		# 						JOIN targets ON targets.id = messages.target_id
+		# 						JOIN schools ON schools.id = messages.school_id
+		# 						LEFT OUTER JOIN comments ON comments.message_id = messages.id
+		# 						WHERE schools.id = ?
+		# 						ORDER BY messages.likes DESC", params["school_id"])
+	
+		# use :order to specify descending like count
+		@messages = Message.all(school: @school, order: [:likes.desc])
+
 		erb File.read("erb/school_page.erb")
 	else
-		# otherwise, id was invalid!
+		# otherwise, school is nil and it isn't in database so id is invalid
 		erb File.read("erb/school_not_found.erb")
 	end
+
 end
 
 get "/search" do
 	#school_name = titlecase(params["school"])
 	school_name = params["school"]
 	# like creates case insensitivity
-	@results = db.execute("SELECT * FROM schools WHERE schools.name LIKE ?", school_name)
-	puts "seach results: " + @results.inspect
+	# @results = db.execute("SELECT * FROM schools WHERE schools.name LIKE ?", school_name)
+
+	# .like equivalent to SQL LIKE, creates
+	# case insensitivity
+	@results = School.all(:name.like => school_name)
+
+	# puts "seach results: " + @results.inspect
 	erb File.read("erb/search.erb")
 end
 
+get "/about" do
+	erb File.read("erb/aboutme.erb")
+end
 
 # get "/like/:message_id" do
 # 	message = db.execute("SELECT messages.id, messages.message, messages.likes, schools.url_name FROM
@@ -169,10 +204,6 @@ end
 # 	redirect to("/#{message["url_name"]}/recent")
 # end
 
-
-get "/about" do
-	erb File.read("erb/aboutme.erb")
-end
 
 # get "/test" do
 # 	school_arr = []
