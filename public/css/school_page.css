@@ -119,19 +119,20 @@ h1#school-name {
 
 
 #sidebar-enter-name {
-    width: 80%;
+    width: 85%;
     margin-left: 5%;
 }
 
 #sidebar-enter-message {
-    width: 80%;
+    width: 85%;
     margin-left: 5%;
     height: 120px;
 }
 
 #buzz-button {
-    margin: 0px 5%;
-    width: 85%;
+    margin: 0px;
+    margin-left: 5%;
+    width: 90%;
 }
 
 #compliment-label {

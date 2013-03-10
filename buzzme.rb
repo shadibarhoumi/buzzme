@@ -36,7 +36,8 @@ get "/" do
 		schools_array.push(entry)
 	end
 	@js_schools_array = to_javascript_array(schools_array)
-	erb File.read("erb/home.erb")
+	
+	erb :home
 end
 
 post "/" do
@@ -68,7 +69,7 @@ post "/" do
 end
 
 get "/create/school" do
-	erb File.read("erb/create_school.erb")
+	erb :create_school
 end
 
 post "/create/school" do
@@ -81,7 +82,6 @@ post "/create/school" do
 end
 
 # handle trending and recent routes in one go!
-
 get "/school/:school_id/:sort" do
 
 	@school = School.get(params["school_id"])
@@ -96,10 +96,10 @@ get "/school/:school_id/:sort" do
 			@messages = Message.all(school: @school, order: [:likes.desc])
 		end
 
-		erb File.read("erb/school_page.erb")
+		erb :school_page
 	else
 		# otherwise, school is nil and it isn't in database so id is invalid
-		erb File.read("erb/school_not_found.erb")
+		erb :school_not_found
 	end
 end
 
@@ -117,51 +117,17 @@ post "/school/:school_id/*" do
 	redirect to("/school/#{params["school_id"]}/recent")
 end
 
-# get "/school/:school_id/recent" do
-	
-# 	@school = School.get(params["school_id"])
-
-# 	if !@school.nil? # if school is not nil
-	
-# 		# use :order to specify descending timestamp order
-# 		@messages = Message.all(school: @school, order: [:created_at.desc])
-
-# 		erb File.read("erb/school_page.erb")
-# 	else
-# 		# otherwise, school is nil and it isn't in database so id is invalid
-# 		erb File.read("erb/school_not_found.erb")
-# 	end
-
-# end
-
-
-# get "/school/:school_id/trending" do
-# 	@school = School.get(params["school_id"])
-
-# 	if !@school.nil? # if school is not nil
-
-# 		# use :order to specify descending like count
-# 		@messages = Message.all(school: @school, order: [:likes.desc])
-
-# 		erb File.read("erb/school_page.erb")
-# 	else
-# 		# otherwise, school is nil and it isn't in database so id is invalid
-# 		erb File.read("erb/school_not_found.erb")
-# 	end
-
-# end
-
 get "/search" do
 	school_name = params["school"]
 
 	# .like equivalent to SQL LIKE, creates case insensitivity
 	@results = School.all(:name.like => school_name)
 
-	erb File.read("erb/search.erb")
+	erb :search
 end
 
 get "/about" do
-	erb File.read("erb/aboutme.erb")
+	erb :aboutme
 end
 
 get "/like/:message_id" do
@@ -171,7 +137,7 @@ get "/like/:message_id" do
 		# if message exists, increment likes by 1 [update() saves automatically]
 		message.update(likes: message.likes + 1)
 	else
-		erb File.read("erb/message_not_found.erb")
+		erb :message_not_found
 	end
 
 	# TODO: provide return url for redirection if javascript isn't enabled
