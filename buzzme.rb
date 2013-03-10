@@ -80,21 +80,27 @@ post "/create/school" do
 	redirect to("/school/#{school.id}/recent")
 end
 
-get "/school/:school_id/recent" do
-	
+# handle trending and recent routes in one go!
+
+get "/school/:school_id/:sort" do
+
 	@school = School.get(params["school_id"])
 
 	if !@school.nil? # if school is not nil
 	
-		# use :order to specify descending timestamp order
-		@messages = Message.all(school: @school, order: [:created_at.desc])
+		if params["sort"] == "recent"
+			# use :order to specify descending timestamp order
+			@messages = Message.all(school: @school, order: [:created_at.desc])
+		elsif params["sort"] == "trending"
+			# use :order to specify descending like count
+			@messages = Message.all(school: @school, order: [:likes.desc])
+		end
 
 		erb File.read("erb/school_page.erb")
 	else
 		# otherwise, school is nil and it isn't in database so id is invalid
 		erb File.read("erb/school_not_found.erb")
 	end
-
 end
 
 post "/school/:school_id/*" do
@@ -111,21 +117,39 @@ post "/school/:school_id/*" do
 	redirect to("/school/#{params["school_id"]}/recent")
 end
 
-get "/school/:school_id/trending" do
-	@school = School.get(params["school_id"])
+# get "/school/:school_id/recent" do
+	
+# 	@school = School.get(params["school_id"])
 
-	if !@school.nil? # if school is not nil
+# 	if !@school.nil? # if school is not nil
+	
+# 		# use :order to specify descending timestamp order
+# 		@messages = Message.all(school: @school, order: [:created_at.desc])
 
-		# use :order to specify descending like count
-		@messages = Message.all(school: @school, order: [:likes.desc])
+# 		erb File.read("erb/school_page.erb")
+# 	else
+# 		# otherwise, school is nil and it isn't in database so id is invalid
+# 		erb File.read("erb/school_not_found.erb")
+# 	end
 
-		erb File.read("erb/school_page.erb")
-	else
-		# otherwise, school is nil and it isn't in database so id is invalid
-		erb File.read("erb/school_not_found.erb")
-	end
+# end
 
-end
+
+# get "/school/:school_id/trending" do
+# 	@school = School.get(params["school_id"])
+
+# 	if !@school.nil? # if school is not nil
+
+# 		# use :order to specify descending like count
+# 		@messages = Message.all(school: @school, order: [:likes.desc])
+
+# 		erb File.read("erb/school_page.erb")
+# 	else
+# 		# otherwise, school is nil and it isn't in database so id is invalid
+# 		erb File.read("erb/school_not_found.erb")
+# 	end
+
+# end
 
 get "/search" do
 	school_name = params["school"]
