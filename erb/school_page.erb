@@ -1,33 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
 
 <head>
-        <title>buzzME</title>
-        <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-        <link href='/css/school_page.css' rel='stylesheet' type='text/css'>
+    <title>buzzME</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/school_page.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-<!-- Navigation Bar -->
-<div id="navigation">
-    <ul class="nav nav-pills">
-      <li>
-        <a href="/">Home</a>
-      </li>
-      <li>
-        <a href="/about">About Us</a>
-      </li>
-      <li>
-        <a href="#">Most Buzzed</a>
-      </li>
+<div class="wrapper">
+<div class="page">
 
-    </ul>
+    <!-- School Name -->
+    <h1 id="school-name"><%= @school.name %></h1>
+    <!--Message Feed-->
+    <div class="feed">
+
+        <!-- Sorting -->
+        <div id="sort">
+            Sort by: <a href="/school/<%= @school.id %>/recent">Most Recent</a> | <a href="/school/<%= @school.id %>/trending">Most Popular</a>
+        </div>
+
+        <% @messages.each do |message| %>
+            
+            <!-- feed entry for each message -->
+            <div class="message">
+                Dear <a id="target-name" href="#"><%= message.target.name %></a>,
+
+                <span class="message-body"> <%= message.body %></span>
+
+                <div class="message-bottom-bar">
+                    <span class="timestamp"><%= format_timestamp(message.created_at) %></span>
+                    <span class="message-controls">
+                    <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
+                    Buzz Up! (<%= message.likes %>)</a> | 
+                    <a href="#">Comment</a> | 
+                    <a href ="#">Abuse</a>
+                    </span>
+                </div>
+            </div>
+        <%end%>
+    </div>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+        <div class="nav-header" id="compliment-label"><i class="icon-heart"></i> Leave a compliment!</div>
+        <form method="POST" action="">
+            <input id="sidebar-enter-name" type="text" name="target" placeholder="Student's Name"></input>
+            <textarea id="sidebar-enter-message" name="message" placeholder="Write them a compliment!"></textarea>
+            <button id="buzz-button" class="btn btn-large button btn-info" type="submit"><i class="icon-comment icon-white"></i> Share!</button>
+        </form>
+    </div>
+
+</div>
 </div>
 
-<!-- JQuery Script -->
+
+<!-- Scripts -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- script to make ajax call to '/like/messageId' when like button is clicked -->
@@ -35,76 +68,10 @@
     $(".like_button").click(function() {
         var messageid = $(this).data("messageid");
         $.get("/like/" + messageid);
+
     });
 </script>
 
-<!-- School Name -->
-
-<div class="school span8 offset1"><h1><%= @school.name %></h1></div>
-
-<!-- Grid: Two Columns -->
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span6 offset1 feed-item">
-            <!-- Feed-->
-            <% @messages.each do |message| %>
-                <div class="well message row">
-                    Dear <span class="target-name">
-                        <a href="#"><%= message.target.name %></a>
-                    </span>,
-
-                    <span class="message-text"> <%= message.body %></span>
-
-                    <div class="message-controls">
-                        <%= format_timestamp(message.created_at) %> | <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
-                        Buzz Up! (<%= message.likes %>)</a> | <a>Comment</a> | <a>Abuse</a>
-                    </div>
-                </div>
-            <%end%>
-        </div>
-
-        <!--Column 2-->
-        <div class="well sidebar-nav-fixed offset7" >
-            <!-- Sidebar -->
-            <ul class="nav nav-list">
-
-                <li class="nav-header"><i class="icon-search"></i> Search </li>
-               
-                <!-- INPUT: Search Bar -->
-                    <div class="bar span12 well well-small">
-                        Search here</div>
-
-                <p>
-                <!-- Heading: Sort By -->
-                    <li class="nav-header">
-                        <i class="icon-list"></i> Sort By </li>
-
-                    <!-- BUTTON: Recent -->
-                        <div class="span12 well well-small bar">
-                            Recent</div>
-
-                    <!-- BUTTON: Trending -->
-                        <div class="span12 well well-small bar">
-                            Trending</div>
-
-                <p>
-                <!-- Heading: Buzz Someone! -->
-                    <div class="nav-header">
-                        <i class="icon-heart"></i> Buzz Someone! </div>
-
-                    <!-- INPUT: Name of Recipient -->
-                        <div class="span12 well well-small bar">
-                            Who would you like to buzz?</div>
-
-                    <!-- INPUT: Trending -->
-                        <div class="span12 well well-small bar">
-                            What would you like to say?</div>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<a href="buzzme.html"><img class="logo" src="/img/Logo 1.png"/></a>
 
 </body>
 </html>

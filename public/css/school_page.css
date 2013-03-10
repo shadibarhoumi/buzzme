@@ -1,102 +1,182 @@
-body {
-	background-image: url('/textures/beetexture.png');
-    background-attachment: fixed;
-    font-family: 'Open Sans', sans-serif; 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+html {
+    /*This allows the wrapper to extend to the bottom*/
+    height: 100%;
+}
+
+body { 
+    background-image: url('http://www.desktopwallpaperhd.net/wallpapers/17/6/blue-vector-clouds-devianart-nkspace-175270.jpg');
+    /*background-image: url('http://wallpapersus.com/wallpapers/2012/10/Cartoon-Clouds-And-Blue-Sky-1800x2880.jpg');*/
+    /*background-image: url('http://www.wallm.com/images/t/1280x960/6604-vector-blue-sky-and-white-clouds-desktop-backgrounds-1280x960.jpg');*/
+    background-attachment: fixed; 
+    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-}
-
-.logo {
-    position: fixed;
-    right: 15px; 
-    top: 45px; 
-    width: 110px; 
-    height: 138px;
-}
-
-.thanks {
-    background-color: #594cd8;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    }
-
-.school {
-    padding-top: 40px;
-    font-size: 60px;
-    color: #3514DC;
-}
-
-#navigation {
-    position: fixed;
-    width: 100%;
-    padding: 0px;
-    height: 35px;
-    background-color: #5EC4CD;
-    border-color: black;
-}
-
-.nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-image: -webkit-linear-gradient(top, #FF9E18, #FFB146);
-    background-image: -moz-linear-gradient(top, #FF9E18, #FFB146);
-}
-
-.nav-pills > li > a:hover {
-    background-image: -webkit-linear-gradient(top, #FFB146, #FF9E18);
-    background-image: -moz-linear-gradient(top, #FFB146, #FF9E18);
-}
-
-.nav-pills {
-    color: #85898B;
-    background-color: black;
-    padding: 3px;
-}
-
-.sidebar-nav-fixed {
-    position:fixed;    
-	top:70px;
-    overflow:hidden;
-    float:left;
-    width:20%;
-    min-height:100px;
-    min-width: 150px;
-    border: 10px solid #A08DFF;
-    background-color: #FFFFFF;
-    height:auto !important;
-    height:100px; 
-    box-shadow: 2px 2px 2px #888888;
-    }
-
-.bar {
-    font-family: 'Open Sans', sans-serif; 
-    color: #ffffff;
     font-size: 16px;
-    background-color: #22296D;
-    height: 50px;
-    width: 80px;
+    line-height: 20px;
+    font-color: #333;
+    background-color: #008FC4;
+    height: 100%;
 }
 
-.row-padded {
-    padding: 35px;
-    background-color: #F7F7F7;
-    border: 10px solid #DDD;
+textarea {
+    resize: none;
 }
 
-.target-name {
-    font-weight: bold;
-    color: #333399;
+form {
+    margin: 0px;
 }
 
-.message-text {
-    display: block;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 10px;
+a {
+    color: #08c;
+    text-decoration: none;
 }
 
-.message-controls {
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+h1#school-name {
+    padding: 0px 0px 20px 0px;
+    font-size: 38.5px;
+    font-weight: 600;
+    line-height: 40px;
+    color: #333;
+}
+
+.wrapper {
+    background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat scroll 0% 0% transparent;
+    height: 100%;
+    width: 75%;
+    padding: 1px;
+    margin: 0px auto;
+    max-width: 930px;
+    min-width: 670px;
+    -webkit-box-shadow: 0px 0px 5px rgb(193, 193, 193);
+    -moz-box-shadow: 0px 0px 5px rgb(193, 193, 193);
+    box-shadow: 0px 0px 5px rgb(193, 193, 193);
+
+}
+
+.page {
+    width: 95%;
+    /*background-color: white;*/
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    max-width: 900px;
+    min-width: 650px;
+}
+
+#sort {
+    margin: 10px auto;
+    /*min-width: 60%;*/
+    font-size: 14px;
+    /*TODO: how not to specify fixed width?*/
+    width: 250px;
+}
+
+#sort a {
+    /*color;*/
+}
+
+#sort a:hover {
+    color: yellow;
+}
+
+.feed {
+    width: 60%;
+    float: left;
+    margin-right: 5%;
+    /*background-color: yellow;*/
+}
+
+.sidebar {
+    width: 30%;
+    float: left;
+    background-color: yellow;
+
+    min-height: 20px;
+    padding: 15px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    /*background-color: #f5f5f5;*/
+    border: 1px solid #e3e3e3;
+    
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+
+
+#sidebar-enter-name {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#sidebar-enter-message {
+    width: 80%;
+    margin-left: 5%;
+    height: 120px;
+}
+
+#buzz-button {
+    margin: 0px 5%;
+    width: 85%;
+}
+
+#compliment-label {
+    padding-bottom: 10px;
 }
 
 .message {
-    box-shadow: 2px 2px 2px #888888;
-    background-image: -webkit-linear-gradient(top,#ffffff,#FBF2E5);
-    background-image: -moz-linear-gradient(top,#ffffff,#FBF2E5);
+    min-height: 20px;
+    padding: 19px 19px 5px 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+
+#target-name {
+    font-weight: 900;
+    color: #333399;
+}
+
+#target-name:hover {
+    color: green;
+}
+
+.message-body {
+    display: block;
+    font-weight: 500;
+    padding: 7px 10px 15px 10px;
+}
+
+.timestamp {
+    float: left;
+}
+
+.message-controls {
+    float: right;
+    /*margin-right: 5%;*/
+}
+
+.message-bottom-bar {
+    font-size: 12px;
+    overflow: hidden;
 }

@@ -97,6 +97,20 @@ get "/school/:school_id/recent" do
 
 end
 
+post "/school/:school_id/*" do
+	
+	@school = School.get(params["school_id"])
+	target_name = titlecase(params["target"])
+		
+	# find first target matching name and school, or create new one
+	target = Target.first_or_create(name: target_name, school: @school)
+
+	# TODO: validate that message is not empty...
+	Message.create(body: params["message"], target: target, school: @school)
+
+	redirect to("/school/#{params["school_id"]}/recent")
+end
+
 get "/school/:school_id/trending" do
 	@school = School.get(params["school_id"])
 
