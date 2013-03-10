@@ -47,7 +47,6 @@ h1#school-name {
 
 .wrapper {
     background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat fixed 0% 0% transparent;
-    background-attachment: fixed;
     min-height: 100%;
     width: 75%;
     padding: 1px;
