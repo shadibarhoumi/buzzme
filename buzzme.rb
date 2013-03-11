@@ -99,22 +99,51 @@ get "/school/:school_id/:sort" do
 		erb :school_page
 	else
 		# otherwise, school is nil and it isn't in database so id is invalid
-		erb :school_not_found
+		erb :not_found
 	end
 end
 
 post "/school/:school_id/*" do
 	
-	@school = School.get(params["school_id"])
+	school = School.get(params["school_id"])
 	target_name = titlecase(params["target"])
 		
 	# find first target matching name and school, or create new one
-	target = Target.first_or_create(name: target_name, school: @school)
+	target = Target.first_or_create(name: target_name, school: school)
 
 	# TODO: validate that message is not empty...
-	Message.create(body: params["message"], target: target, school: @school)
+	Message.create(body: params["message"], target: target, school: school)
 
 	redirect to("/school/#{params["school_id"]}/recent")
+end
+
+get "/target/:target_id/:sort" do
+
+	@target = Target.get(params["target_id"])
+
+	if !@target.nil?
+		
+		@school = @target.school
+
+		if params["sort"] == "recent"
+			@messages = Message.all(target: @target, order: [:created_at.desc])
+		elsif params["sort"] == "trending"
+			@messages = Message.all(target: @target, order: [:likes.desc])
+		end
+
+		erb :target_page
+	else
+		erb :not_found
+	end
+end
+
+post "/target/:target_id/*" do
+
+	target = Target.get(params["target_id"])
+	
+	message = Message.create(target: target, body: params["message"], school: target.school)
+
+	redirect to("/target/#{target.id}/recent")
 end
 
 get "/search" do
@@ -137,7 +166,7 @@ get "/like/:message_id" do
 		# if message exists, increment likes by 1 [update() saves automatically]
 		message.update(likes: message.likes + 1)
 	else
-		erb :message_not_found
+		erb :not_found
 	end
 
 	# TODO: provide return url for redirection if javascript isn't enabled
