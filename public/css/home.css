@@ -1,0 +1,39 @@
+h1 {
+	margin-bottom: 0px;
+}
+
+.logo {
+	padding-top: 50px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 200px;
+}
+
+#headline {
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+	padding: 20px;
+}
+
+.submissionform {
+	text-align: center;
+	width: 45%;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 400px;
+}
+
+.topfields {
+	width: 44%;
+}
+
+.bottomfields{
+	width: 92.5%;
+
+}
+
+#buzz-button {
+	width: 92.5%;
+}

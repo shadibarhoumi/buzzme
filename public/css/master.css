@@ -12,3 +12,9 @@
 	max-width: 930px;
 	min-width: 670px;
 }
+
+/*Background Image*/
+body {
+    background-image: url('http://www.desktopwallpaperhd.net/wallpapers/17/6/blue-vector-clouds-devianart-nkspace-175270.jpg');
+    background-attachment: fixed;
+}
