@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 
 <head>
 
@@ -8,6 +8,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="/css/master.css" rel="stylesheet" type="text/css">
     <link href='/css/aboutme.css' rel='stylesheet' type='text/css'/>
 
 </head>
@@ -16,19 +17,26 @@
 
 	
 	<!-- Navigation Bar -->
-	<div id="navigation">
-	    <ul class="nav nav-pills">
-	      <li>
-	        <a href="/">Home</a>
-	      </li>
-	      <li class="active">
-	        <a href="/about">About Us</a>
-	      </li>
-	      <li>
-	        <a href="#">Most Buzzed</a>
-	      </li>
-
-	    </ul>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container" id="nav-elements">
+				<div class="nav-collapse collapse">
+				    <ul class="nav">
+				      <li class="">
+				        <a href="/">Buzzme</a>
+				      </li>
+				      <li class ="active">
+				        <a href="/about">About Us</a>
+				      </li>
+				    </ul>
+				    <!--Search for a School-->
+				      <div class="input-append" id="nav-school-search">
+						<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+				      	<button type="submit" class="btn">Search</button>
+				      </div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Blurb -->
