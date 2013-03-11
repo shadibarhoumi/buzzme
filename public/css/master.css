@@ -1,0 +1,14 @@
+/*Navigation Bar Rules*/
+#nav-school-search {
+	position: relative;
+	top: 5px;
+	float: right;
+}
+#nav-school-search-field {
+	width: 200px;
+}
+#nav-elements {
+	width: 75%;
+	max-width: 930px;
+	min-width: 670px;
+}
