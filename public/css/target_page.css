@@ -38,18 +38,27 @@ a:hover {
 }
 
 h1#breadcrumb {
+    color: #08c;
     padding: 0px 0px 20px 0px;
     font-size: 38.5px;
     font-weight: 600;
     line-height: 40px;
-    color: #333;
+    color: #333399;
+}
+
+h1 #breadcrumb-separator {
+    color: #08c;
+}
+
+h1#breadcrumb a {
+    color: #333399;
 }
 
 h1#breadcrumb a:hover {
     color: yellow;
 }
 
-.wrapper {
+#wrapper {
     background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat fixed 0% 0% transparent;
     min-height: 100%;
     width: 75%;
@@ -63,7 +72,7 @@ h1#breadcrumb a:hover {
 
 }
 
-.page {
+#page {
     width: 95%;
     /*background-color: white;*/
     margin-top: 50px;
@@ -92,14 +101,14 @@ h1#breadcrumb a:hover {
     color: yellow;
 }
 
-.feed {
+#feed {
     width: 60%;
     float: left;
     margin-right: 5%;
     /*background-color: yellow;*/
 }
 
-.sidebar {
+#sidebar {
     width: 30%;
     float: left;
     background-color: yellow;

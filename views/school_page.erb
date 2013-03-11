@@ -11,13 +11,13 @@
 
 <body>
 
-<div class="wrapper">
-<div class="page">
+<div id="wrapper">
+<div id="page">
 
     <!-- School Name -->
     <h1 id="school-name"><%= @school.name %></h1>
     <!--Message Feed-->
-    <div class="feed">
+    <div id="feed">
 
         <!-- Sorting -->
         <div id="sort">
@@ -47,7 +47,7 @@
 
     <!-- Sidebar -->
 
-    <div class="sidebar">
+    <div id="sidebar">
         <div class="nav-header" id="compliment-label"><i class="icon-heart"></i> Leave a compliment!</div>
         <form method="POST" action="">
             <input id="sidebar-enter-name" type="text" name="target" placeholder="Student's Name"></input>
@@ -84,6 +84,7 @@
 
         var $sidebar = $(".sidebar"), 
             $window = $(window),
+            $page = $("#page")
             initialOffset = $sidebar.offset(),
             topPadding = 80;
             duration = 300;
@@ -91,6 +92,8 @@
         // sidebar follow
         $window.scroll(function() {
             if ($window.scrollTop() > initialOffset.top) {
+                
+
                 $sidebar.stop().animate({
                     // subtract initialOffset.top of sidebar because it's positioned
                     // relative to its container, and it starts off at 0

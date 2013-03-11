@@ -42,10 +42,10 @@ h1#school-name {
     font-size: 38.5px;
     font-weight: 600;
     line-height: 40px;
-    color: #333;
+    color: #333399;
 }
 
-.wrapper {
+#wrapper {
     background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat fixed 0% 0% transparent;
     min-height: 100%;
     width: 75%;
@@ -59,7 +59,7 @@ h1#school-name {
 
 }
 
-.page {
+#page {
     width: 95%;
     /*background-color: white;*/
     margin-top: 50px;
@@ -88,14 +88,14 @@ h1#school-name {
     color: yellow;
 }
 
-.feed {
+#feed {
     width: 60%;
     float: left;
     margin-right: 5%;
     /*background-color: yellow;*/
 }
 
-.sidebar {
+#sidebar {
     width: 30%;
     float: left;
     background-color: yellow;
