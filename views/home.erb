@@ -1,116 +1,112 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 	<head>
 		<!-- BOOTSTRAP -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-		<link href="css/home.css" rel="stylesheet">
+		<link href="/css/master.css" rel="stylesheet" type="text/css">
+		<link href="/css/home.css" rel="stylesheet">
 
 		<title>Buzzme!</title>
 	</head>
 
 
-	<body>
+<body>
 
-		<!-- Navigation Bar -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<div class="nav-collapse collapse">
-					    <ul class="nav">
-					      <li class="active">
-					        <a href="/">Home</a>
-					      </li>
-					      <li>
-					        <a href="/about">About Us</a>
-					      </li>
-					    </ul>
-					    <!--Search for a School-->
-					      <div class="input-append" id="school-search">
-							<input name="school" id="appendedInputButton" type="text" class="span2" placeholder="Search for a school">
-					      	<button type="submit" class="btn">Search</button>
-					      </div>
-					</div>
+	<!-- Navigation Bar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container" id="nav-elements">
+				<div class="nav-collapse collapse">
+				    <ul class="nav">
+				      <li class="active">
+				        <a href="/">Buzzme</a>
+				      </li>
+				      <li>
+				        <a href="/about">About Us</a>
+				      </li>
+				    </ul>
+				    <!--Search for a School-->
+			      	<div class="input-append" id="nav-school-search">
+						<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+				      	<button type="submit" class="btn">Search</button>
+			      	</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Logo -->
-		<h1><img class="logo"src="/img/Logo 1.png" alt="Buzzme"></h1>
+	<!-- Logo -->
+	<h1><img class="logo"src="/img/Logo 1.png" alt="Buzzme"></h1>
 
-		<div id="headline">
-			Send anonymous compliments to your classmates!
-		</div>
+	<div id="headline">
+		Send anonymous compliments to your classmates!
+	</div>
 
-		<div class="submissionform well">
-			<form name="mainform" method="post" action="/">
+	<div class="submissionform well">
+		<form name="mainform" method="post" action="/">
 
-				<input id="school" class="topfields" autocomplete='off' type='text' name='school' data-provide='typeahead' data-source=<%=@js_schools_array%> placeholder="What school are you from?">			
+			<input id="school" class="topfields" autocomplete='off' type='text' name='school' data-provide='typeahead' data-source=<%=@js_schools_array%> placeholder="What school are you from?">			
 
-				<input class="topfields" type="text" name="target" placeholder="Who are you complimenting?"/>
+			<input class="topfields" type="text" name="target" placeholder="Who are you complimenting?"/>
 
-				<p>
+			<p>
 
-				<textarea class="bottomfields" type="text" name="message" placeholder="What about 'em?" style="width:92.5%"/></textarea>
-				
-				<p>
+			<textarea class="bottomfields" type="text" name="message" placeholder="What about 'em?" style="width:92.5%"/></textarea>
+			
+			<p>
 
-				<button id = "buzz-button" class="btn btn-large button btn-warning" onClick="schoolConfirmation"><i class="icon-comment icon-white"></i> Buzz!</button>
+			<button id = "buzz-button" class="btn btn-large button btn-warning" onClick="schoolConfirmation"><i class="icon-comment icon-white"></i> Buzz!</button>
 
-				<!-- 
-				<a href="#createSchoolModal" role="button" class="btn btn-large btn-warning" data-toggle="modal">Share!</a> -->
+			<!-- 
+			<a href="#createSchoolModal" role="button" class="btn btn-large btn-warning" data-toggle="modal">Share!</a> -->
 
-			</form>
+		</form>
 
-		<!-- Search Bar -->
-			<form class="form-search" method="get" action="/search">
-			  <input name="school" id="searchBar" type="text" class="input-medium search-query" placeholder="Search for your school">
-			  <button type="submit" class="button btn btn-warning">Search</button>
-			</form>
+	<!-- Search Bar -->
+		<form class="form-search" method="get" action="/search">
+		  <input name="school" id="searchBar" type="text" class="input-medium search-query" placeholder="Search for your school">
+		  <button type="submit" class="button btn btn-warning">Search</button>
+		</form>
 
-		</div>
+	</div>
 
-		
-		<!-- BOOTSTRAP SCRIPT -->
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+	
+	<!-- BOOTSTRAP SCRIPT -->
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-		<script type="text/javascript">
-			function searchList(){
-				var school = $('#searchBox').val();
-				$.get("/gotoschool/" + school);
-			}
-		</script>
-		<script type="text/javascript">
+	<script type="text/javascript">
+		function searchList(){
+			var school = $('#searchBox').val();
+			$.get("/gotoschool/" + school);
+		}
+	</script>
+	<script type="text/javascript">
 
-		   $(document).ready(function() {
-				$("#headline").width(($(document).width());
-			});
+	   $(document).ready(function() {
+			$("#headline").width(($(document).width());
+		});
 
-			$(window).resize(function() {
-	    		$("#submissionform").hide(); 
-				$("#submissionform").width(($(document).width()));
-				$("#submissionform").css('left',200);
-				$("#submissionform").height($(document).height());
-				$("#submissionform").show();
+		$(window).resize(function() {
+    		$("#submissionform").hide(); 
+			$("#submissionform").width(($(document).width()));
+			$("#submissionform").css('left',200);
+			$("#submissionform").height($(document).height());
+			$("#submissionform").show();
 
-				$("#headline").hide(); 
-				$("#headline").width(($(document).width()));
-				$("#headline").css('left',200);
-				$("#headline").height($(document).height());
-				$("#headline").show();
-			});
+			$("#headline").hide(); 
+			$("#headline").width(($(document).width()));
+			$("#headline").css('left',200);
+			$("#headline").height($(document).height());
+			$("#headline").show();
+		});
 
-		</script>
-
-
-
-	<!-- END OF SCRIPT -->
-
-	</body>
+	</script>
+</body>
 
 </html>
