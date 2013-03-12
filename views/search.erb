@@ -1,3 +1,8 @@
+<head>
+	<link href="/css/master.css" rel="stylesheet" type="text/css">	
+</head>
+
+<body>
 <% if @results.empty? %>
 	<h1>No results for "<%= params["school"] %>"!</h1>
 
@@ -13,3 +18,4 @@
 <% end %>
 
 <p>Can't find your school here? <a href="/create/school">Create a new school</a>.</p>
+</body>

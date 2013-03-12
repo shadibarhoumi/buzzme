@@ -1,12 +1,16 @@
 <head>
     <title>Create School</title>
+	<link href="/css/master.css" rel="stylesheet" type="text/css">	
+	<link href="/css/create_school.css" rel="stylesheet" type="text/css">	
 </head>
 
 <body>
     <h1>Create School</h1>
-    <form method="post" action="/create/school">
-        <input type="text" name="school" placeholder="School Name"/>
-        <input type="text" name="zipcode" placeholder="Zip"/>
-        <button type="submit">Create!</button>
-    </form> 
+    <div id="wrapper">
+	    <form class="create-school-form" method="post" action="/create/school">
+	        <input type="text" name="school" placeholder="School Name"/>
+	        <input type="text" name="zipcode" placeholder="Zip"/>
+	        <button class="btn btn-large button btn-danger" type="submit">Create!</button>
+	    </form> 
+   </div>
 </body>

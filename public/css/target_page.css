@@ -1,24 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
-html {
-    /*This allows the wrapper to extend to the bottom*/
-    height: 100%;
-}
-
-body { 
-    background-image: url('http://www.desktopwallpaperhd.net/wallpapers/17/6/blue-vector-clouds-devianart-nkspace-175270.jpg');
-    /*background-image: url('http://wallpapersus.com/wallpapers/2012/10/Cartoon-Clouds-And-Blue-Sky-1800x2880.jpg');*/
-    /*background-image: url('http://www.wallm.com/images/t/1280x960/6604-vector-blue-sky-and-white-clouds-desktop-backgrounds-1280x960.jpg');*/
-    background-attachment: fixed; 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
-    font-color: #333;
-    background-color: #008FC4;
-    height: 100%;
-}
-
 textarea {
     resize: none;
 }
