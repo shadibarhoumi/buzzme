@@ -1,6 +1,6 @@
 body {
-	background-image: url('/textures/beetexture.png');
-    background-attachment: fixed;
+	text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }
 p {
 	padding-bottom: 10px;
@@ -9,28 +9,25 @@ p {
 .pic {
 	width: 15%;
 	min-width: 150px;
-	height: 20%;
+	height: auto;
 	padding: 0.2%;
 }
 
-h1 {
-	padding-top: 55px;
-}
-
 .pic-well {
-	padding-bottom: 10px;
-	padding-top: 40px;
+	padding-bottom: 0px;
+	padding-top: 20px;
 	padding-left: 0px;
 	padding-right: 0px;
-	width: 90%;
-	background-image: -webkit-linear-gradient(top, #FFB146, #FF9E18);
-	background-image: -moz-linear-gradient(top, #FFB146, #FF9E18);
+	width: 500px;
+/*	background-image: -webkit-linear-gradient(top, #FFFFFF, #FFFFE6);
+	background-image: -moz-linear-gradient(top, #FFFFFF, #FFFFE6);
+*/	bottom: 50px;
 }
 
 .logo {
-	position: fixed;
-	right: 15px; 
-	top: 45px; 
-	width: 110px; 
-	height: 138px;
+	padding-top: 60px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 200px;
 }

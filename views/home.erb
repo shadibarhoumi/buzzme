@@ -12,28 +12,28 @@
 
 <body>
 
-	<!-- Navigation Bar -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container" id="nav-elements">
-				<div class="nav-collapse collapse">
-				    <ul class="nav">
-				      <li class="active">
-				        <a href="/">Buzzme</a>
-				      </li>
-				      <li>
-				        <a href="/about">About Us</a>
-				      </li>
-				    </ul>
-				    <!--Search for a School-->
-			      	<div class="input-append" id="nav-school-search">
-						<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
-				      	<button type="submit" class="btn">Search</button>
-			      	</div>
-				</div>
+<!-- Navigation Bar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" id="nav-elements">
+			<div class="nav-collapse collapse">
+			    <ul class="nav">
+			      <li class="active">
+			        <a href="/">Buzzme</a>
+			      </li>
+			      <li>
+			        <a href="/about">About Us</a>
+			      </li>
+			    </ul>
+			    <!--Search for a School-->
+		      	<div class="input-append" id="nav-school-search">
+					<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+			      	<button type="submit" class="btn">Search</button>
+		      	</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 <div id="wrapper">
 	<!-- Logo -->
@@ -44,18 +44,14 @@
 	</div>
 
 	<div class="submissionform well">
-		<form name="mainform" method="post" action="/">
+		<form id="mainform" method="post" action="/">
 
 			<input id="school" class="topfields" autocomplete='off' type='text' name='school' data-provide='typeahead' data-source=<%=@js_schools_array%> placeholder="What school are you from?">			
 
 			<input class="topfields" type="text" name="target" placeholder="Who are you complimenting?"/>
 
-			<p>
-
 			<textarea class="bottomfields" type="text" name="message" placeholder="What about 'em?" style="width:92.5%"/></textarea>
 			
-			<p>
-
 			<button id = "buzz-button" class="btn btn-large button btn-info" onClick="schoolConfirmation"><i class="icon-comment icon-white"></i> Buzz!</button>
 
 			<!-- 
@@ -65,39 +61,39 @@
 	</div>
 </div>
 
-	
-	<!-- BOOTSTRAP SCRIPT -->
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- BOOTSTRAP SCRIPT -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-	<script type="text/javascript">
-		function searchList(){
-			var school = $('#searchBox').val();
-			$.get("/gotoschool/" + school);
-		}
-	</script>
-	<script type="text/javascript">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-	   $(document).ready(function() {
-			$("#headline").width(($(document).width());
-		});
+<script type="text/javascript">
+	function searchList(){
+		var school = $('#searchBox').val();
+		$.get("/gotoschool/" + school);
+	}
+</script>
+<script type="text/javascript">
 
-		$(window).resize(function() {
-    		$("#submissionform").hide(); 
-			$("#submissionform").width(($(document).width()));
-			$("#submissionform").css('left',200);
-			$("#submissionform").height($(document).height());
-			$("#submissionform").show();
+   $(document).ready(function() {
+		$("#headline").width(($(document).width());
+	});
 
-			$("#headline").hide(); 
-			$("#headline").width(($(document).width()));
-			$("#headline").css('left',200);
-			$("#headline").height($(document).height());
-			$("#headline").show();
-		});
-	</script>
+	$(window).resize(function() {
+		$("#submissionform").hide(); 
+		$("#submissionform").width(($(document).width()));
+		$("#submissionform").css('left',200);
+		$("#submissionform").height($(document).height());
+		$("#submissionform").show();
+
+		$("#headline").hide(); 
+		$("#headline").width(($(document).width()));
+		$("#headline").css('left',200);
+		$("#headline").height($(document).height());
+		$("#headline").show();
+	});
+</script>
 
 </body>
 
