@@ -24,19 +24,6 @@ h1#school-name {
     color: #333399;
 }
 
-#wrapper {
-    background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat fixed 0% 0% transparent;
-    min-height: 100%;
-    width: 75%;
-    padding: 1px;
-    margin: 0px auto;
-    max-width: 930px;
-    min-width: 670px;
-    -webkit-box-shadow: 0px 0px 5px rgb(193, 193, 193);
-    -moz-box-shadow: 0px 0px 5px rgb(193, 193, 193);
-    box-shadow: 0px 0px 5px rgb(193, 193, 193);
-}
-
 #page {
     width: 95%;
     /*background-color: white;*/
