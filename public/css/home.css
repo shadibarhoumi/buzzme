@@ -7,7 +7,7 @@ h1 {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	width: 200px;
+	width: 150px;
 }
 
 #headline {
@@ -19,10 +19,14 @@ h1 {
 
 .submissionform {
 	text-align: center;
-	width: 45%;
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 	min-width: 400px;
+
+	-webkit-box-shadow: 2px 2px 8px 0px rgb(193, 193, 193);
+    -moz-box-shadow: 2px 2px 8px 0px rgb(193, 193, 193);
+    box-shadow: 2px 2px 8px 0px rgb(193, 193, 193);
 }
 
 .topfields {
