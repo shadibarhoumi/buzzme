@@ -29,8 +29,9 @@ h1 {
 	width: 44%;
 }
 
-.bottomfields{
+#message-input{
 	width: 92.5%;
+	height: 70px;
 
 }
 
