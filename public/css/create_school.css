@@ -1,7 +1,30 @@
-form.create-school-form input {
-	height: 30px;
+body {
+	text-align: center;
+}
+h1 {
+	padding-top: 50px;
+}
+
+#createSchoolForm {
+	display: block;
+	width: 45%;
+	min-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 40px;
+
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+input.school-fields {
+	height: 25px;
+	float: left;
+	padding-bottom: 3px;
 }
 
 form button.button {
-	
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
 }
