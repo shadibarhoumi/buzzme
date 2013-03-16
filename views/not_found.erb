@@ -5,6 +5,31 @@
 
 
 <body>
+
+
+<!-- Navigation Bar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" id="nav-elements">
+			<div class="nav-collapse collapse">
+			    <ul class="nav">
+			      <li class="active">
+			        <a href="/">Buzzme</a>
+			      </li>
+			      <li>
+			        <a href="/about">About Us</a>
+			      </li>
+			    </ul>
+			    <!--Search for a School-->
+		      	<div class="input-append" id="nav-school-search">
+					<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+			      	<button type="submit" class="btn">Search</button>
+		      	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="wrapper">
 
 	<h1>This page doesn't seem to exist! Do you want to <a href="/create/school">create it</a>?</h1>
@@ -23,6 +48,11 @@ body {
 }
 h1 {
 	padding: 20px;
+	padding-top: 50px;
+}
+input[type="text"]{
+	height: 30px;
+	padding: 4px 6px;
 }
 
 </style>
