@@ -1,11 +1,17 @@
+<!DOCTYPE html>
+<html>
 <head>
 	<title>Error 404</title>
 	<link href="/css/master.css" rel="stylesheet" type="text/css">	
+	<script type="text/javascript">
+		function createSchool() {
+			show(prompt("What is the name of your school?", "School Name"));
+		}
+	</script>
+
 </head>
 
-
 <body>
-
 
 <!-- Navigation Bar -->
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,15 +37,10 @@
 </div>
 
 <div id="wrapper">
-
-	<h1>This page doesn't seem to exist! Do you want to <a href="/create/school">create it</a>?</h1>
-
-	<button class="btn btn-large btn-info" href="/">Back to home? </button>
-
+	<h1>This page doesn't seem to exist! Do you want to create it?</h1>
+	<button type="button" class="btn btn-info" onclick="createSchool()">Create School</button>
 </div>
 </body>
-
-
 
 <style type="text/css">
 
@@ -56,4 +57,4 @@ input[type="text"]{
 }
 
 </style>
-
+</html>

@@ -63,6 +63,9 @@ textarea {
 	max-width: 930px;
 	min-width: 670px;
 }
+.nav > a {
+    font-weight: normal;
+}
 
 /*Background Image*/
 body {
