@@ -5,39 +5,43 @@
 </head>
 
 <body>
-    <div id="wrapper">
+<div id="wrapper">
 
-    	<!-- Navigation Bar -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container" id="nav-elements">
-					<div class="nav-collapse collapse">
-					    <ul class="nav">
-					      <li class="">
-					        <a href="/">Buzzme</a>
-					      </li>
-					      <li>
-					        <a href="/about">About Us</a>
-					      </li>
-					    </ul>
-					    <!--Search for a School-->
-				      	<div class="input-append" id="nav-school-search">
-							<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
-					      	<button type="submit" class="btn">Search</button>
-				      	</div>
-					</div>
+	<!-- Navigation Bar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container" id="nav-elements">
+				<div class="nav-collapse collapse">
+				    <ul class="nav">
+				      <li class="">
+				        <a href="/">Buzzme</a>
+				      </li>
+				      <li>
+				        <a href="/about">About Us</a>
+				      </li>
+				      <li>
+				      	<!-- page for all recent posts -->
+				      	<a href="/school/all">Recent</a>
+				      </li>
+				    </ul>
+				    <!--Search for a School-->
+			      	<div class="input-append" id="nav-school-search">
+						<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+				      	<button type="submit" class="btn">Search</button>
+			      	</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-    	<h1>Create School</h1>
+	<h1>Create School</h1>
 
-	    <form id="createSchoolForm" class="well" method="post" action="/create/school">
-	        <input class="school-fields" type="text" name="school" placeholder="School Name"/>
-	        <input class="school-fields" type="text" name="zipcode" placeholder="Zip Code"/>
+    <form id="createSchoolForm" class="well" method="post" action="/create/school">
+        <input class="school-fields" type="text" name="school" placeholder="School Name"/>
+        <input class="school-fields" type="text" name="zipcode" placeholder="Zip Code"/>
 
 
-	        <button class="btn btn-large button btn-info" type="submit">Create!</button>
-	    </form> 
-   </div>
+        <button class="btn btn-large button btn-info" type="submit">Create!</button>
+    </form> 
+</div>
 </body>

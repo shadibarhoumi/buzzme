@@ -6,7 +6,7 @@
     <link href="/css/master.css" rel="stylesheet" type="text/css">
     <link href="/css/school_page.css" rel="stylesheet" type="text/css">
     
-    <title><%= @school.name %></title>
+    <title>Recent</title>
 </head>
 
 <body>
@@ -23,10 +23,10 @@
                   <li>
                     <a href="/about">About Us</a>
                   </li>
-                  <li>
+                  <li class="active">
                     <!-- page for all recent posts -->
                     <a href="/school/all">Recent</a>
-                  </li>
+                  </li>                
                 </ul>
                 <!--Search for a School-->
                 <div class="input-append" id="nav-school-search">
@@ -44,14 +44,9 @@
 
 
     <!-- School Name -->
-    <h1 id="school-name"><%= @school.name %></h1>
+    <h1 id="school-name">Recent</h1>
     <!--Message Feed-->
     <div id="feed">
-
-            <!-- Sorting -->
-            <div id="sort">
-                Sort by: <a href="/school/<%= @school.id %>/recent">Most Recent</a> | <a href="/school/<%= @school.id %>/trending">Most Popular</a>
-            </div>
 
             <% @messages.each do |message| %>
                 
@@ -99,14 +94,7 @@
             $.get("/like/" + messageid);
 
         });
-    // set classname of currently selected sorting option
-    // to 'current-sort'
-    var sortLinks = $("#sort a");
-    for (var i = 0; i < sortLinks.length; i++) {
-        if (sortLinks[i].pathname === window.location.pathname) {
-            sortLinks.eq(i).addClass('current-sort');
-        }
-    }
+
     </script>
     <!-- Following Sidebar
     <script type="text/javascript" src="js/sidbar.js"></script>

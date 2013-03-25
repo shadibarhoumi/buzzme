@@ -103,6 +103,13 @@ get "/school/:school_id/:sort" do
 	end
 end
 
+#<Sara_fucking_around>
+get "/school/all" do
+	@messages = Message.all(order: [:created_at.desc])
+	erb :all_school_page
+end
+#</Sara_fucking_around>
+
 post "/school/:school_id/*" do
 	
 	school = School.get(params["school_id"])
