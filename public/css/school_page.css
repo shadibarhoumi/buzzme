@@ -56,6 +56,10 @@ h1#school-name {
     /*background-color: yellow;*/
 }
 
+#feed .message span#school-name {
+    text-align: right;
+}
+
 #sidebar {
     width: 30%;
     float: left;
