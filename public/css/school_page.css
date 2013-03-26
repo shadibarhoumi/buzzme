@@ -32,7 +32,7 @@ h1#school-name {
     min-width: 650px;
 }
 
-#sort {
+div#sort {
     margin: 10px auto;
     /*min-width: 60%;*/
     font-size: 14px;
@@ -41,11 +41,11 @@ h1#school-name {
 }
 
 
-#sort a:hover {
+div#sort a:hover {
     color: yellow;
 }
 
-#sort a.current-sort {
+div#sort a.current-sort {
     color: yellow;
 }
 
@@ -57,13 +57,13 @@ h1#school-name {
 }
 
 #feed .message span#school-name {
-    text-align: right;
+    float: right;
 }
 
 #sidebar {
     width: 30%;
     float: left;
-    background-color: yellow;
+    background-color: #FFED40;
     position: relative;
 
     min-height: 20px;

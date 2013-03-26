@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+    <img src="/img/roughlogo2.png" class="logo">
 </div>
 
 
@@ -53,7 +54,9 @@
                 <!-- feed entry for each message -->
                 <div class="message">
                     Dear <a id="target-name" href="/target/<%= message.target.id %>/recent"><%= message.target.name %></a>,
-                    <span id="school-name">at <% message.school_id %> </span>
+                    <span id="school-name">at 
+                        <a href = "/school/<% message.school.id %>/recent"> School Name Here <!-- <% message.school.name %> --> </a>
+                    </span>
 
                     <span class="message-body"> <%= message.body %></span>
 

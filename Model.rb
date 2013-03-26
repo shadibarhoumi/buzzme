@@ -28,7 +28,7 @@ class Message
 
 	has n, :comments
 
-	belongs_to :school #,:child_key => [:school_id]
+	belongs_to :school
 	belongs_to :target
 end
 

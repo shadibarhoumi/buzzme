@@ -67,6 +67,15 @@ textarea {
     font-weight: normal;
 }
 
+.navbar img.logo {
+    height: 30px;
+    width: 30px;
+    padding-top: 5px;
+    margin-left: 95%;
+    position: absolute;
+    top: 0px;
+}
+
 /*Background Image*/
 body {
     background-image: url('http://www.desktopwallpaperhd.net/wallpapers/17/6/blue-vector-clouds-devianart-nkspace-175270.jpg');
