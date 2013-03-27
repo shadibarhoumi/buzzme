@@ -25,6 +25,10 @@ body {
     height: 100%;
 }
 
+div.input-append input[type="text"] {
+    height: 20px;
+}
+
 #wrapper {
     background: url("https://abs.twimg.com/a/1362702324/t1/img/wash-white-30.png") repeat fixed 0% 0% transparent;
     min-height: 100%;

@@ -39,14 +39,24 @@
 </div>
 
 <div id="wrapper">
-	<h1>This page doesn't seem to exist! Do you want to create it?</h1>
+	<h1>This school page doesn't seem to exist! Do you want to create it?</h1>
 	<button id="createSchool" class="btn btn-info" onclick="open_modal();">Create School</button>
 </div>
 
-<div id="overlay" class="active" onclick="close_modal();"></div>
-<div id="modal" class="active">
+<div id="overlay" class="" onclick="close_modal();"></div>
+<div id="modal" class="">
 	<div id="createSchool" class="well">
-		<p>Links to html create school page</p>
+
+		<h1>Create School</h1>
+
+	    <form id="createSchoolForm" class="well" method="post" action="/create/school">
+	        <input class="school-fields" type="text" name="school" placeholder="School Name"/>
+	        <input class="school-fields" type="text" name="zipcode" placeholder="Zip Code"/>
+
+
+	        <button class="btn btn-large button btn-info" type="submit">Create!</button>
+	    </form> 
+
 	</div>
 </div>
 

@@ -5,9 +5,9 @@ h1 {
 	padding-top: 50px;
 }
 
-#createSchoolForm {
+div#createSchool {
 	display: block;
-	width: 45%;
+	width: 25%;
 	min-width: 400px;
 	margin-right: auto;
 	margin-left: auto;
@@ -19,7 +19,6 @@ h1 {
 }
 input.school-fields {
 	height: 25px;
-	float: left;
 	padding-bottom: 3px;
 }
 
