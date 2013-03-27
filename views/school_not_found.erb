@@ -1,3 +1,68 @@
-<h1>Wuh oh! School not found!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>School Not Found</title>
+	<link href="/css/master.css" rel="stylesheet" type="text/css">	
+	<link href="/css/school_not_found.css" rel="stylesheet" type="text/css">	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/mootools/1.4.5/mootools-core-full-nocompat-yc.js"></script>
 
-<a href="/">Back to home</a>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" id="nav-elements">
+			<div class="nav-collapse collapse">
+			    <ul class="nav">
+			      <li class="active">
+			        <a href="/">Buzzme</a>
+			      </li>
+			      <li>
+			        <a href="/about">About Us</a>
+			      </li>
+			      <li>
+                    <!-- page for all recent posts -->
+                    <a href="/school/all">Recent</a>
+                  </li>
+			    </ul>
+			    <!--Search for a School-->
+		      	<div class="input-append" id="nav-school-search">
+					<input name="school" id="nav-school-search-field" type="text" placeholder="Search for a school">
+			      	<button type="submit" class="btn">Search</button>
+		      	</div>
+			</div>
+		</div>
+	</div>
+	<img src="/img/roughlogo2.png" class="logo">
+</div>
+
+<div id="wrapper">
+	<h1>This page doesn't seem to exist! Do you want to create it?</h1>
+	<button id="createSchool" class="btn btn-info" onclick="open_modal();">Create School</button>
+</div>
+
+<div id="overlay" class="active" onclick="close_modal();"></div>
+<div id="modal" class="active">
+	<div id="createSchool" class="well">
+		<p>Links to html create school page</p>
+	</div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+var close_modal = function() {
+	$$("#overlay").removeClass('active');	
+	$$("#modal").removeClass('active');
+};
+var open_modal = function() {
+	$$("#overlay").addClass('active');
+	$$("#modal").addClass('active');
+};
+
+</script>
+
+</html>

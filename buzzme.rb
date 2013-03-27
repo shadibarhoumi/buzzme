@@ -99,7 +99,7 @@ get "/school/:school_id/:sort" do
 		erb :school_page
 	else
 		# otherwise, school is nil and it isn't in database so id is invalid
-		erb :not_found
+		erb :school_not_found
 	end
 end
 
