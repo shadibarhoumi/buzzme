@@ -62,38 +62,44 @@
 	</div>
 </div>
 
+<div id="overlay" class="" onclick="close_modal();"></div>
+<div id="modal" class="">
+	<div id="createSchool" class="well">
+
+		<h1>Create School</h1>
+
+	    <form id="createSchoolForm" class="well" method="post" action="/create/school">
+	        <input class="school-fields" type="text" name="school" placeholder="School Name"/>
+	        <input class="school-fields" type="text" name="zipcode" placeholder="Zip Code"/>
+
+
+	        <button class="btn btn-large button btn-info" type="submit">Create!</button>
+	    </form> 
+
+	</div>
+</div>
+
 
 <!-- BOOTSTRAP SCRIPT -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	function searchList(){
-		var school = $('#searchBox').val();
-		$.get("/gotoschool/" + school);
-	}
-</script>
-<script type="text/javascript">
 
-   $(document).ready(function() {
-		$("#headline").width(($(document).width());
-	});
+var close_modal = function() {
+	$$("#overlay").removeClass('active');	
+	$$("#modal").removeClass('active');
+};
+var open_modal = function() {
+	$$("#overlay").addClass('active');
+	$$("#modal").addClass('active');
+};
 
-	$(window).resize(function() {
-		$("#submissionform").hide(); 
-		$("#submissionform").width(($(document).width()));
-		$("#submissionform").css('left',200);
-		$("#submissionform").height($(document).height());
-		$("#submissionform").show();
+if modal_time === true {
+	open_modal();
+}
 
-		$("#headline").hide(); 
-		$("#headline").width(($(document).width()));
-		$("#headline").css('left',200);
-		$("#headline").height($(document).height());
-		$("#headline").show();
-	});
 </script>
 
 </body>
