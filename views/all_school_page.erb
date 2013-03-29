@@ -43,8 +43,6 @@
 <div id="wrapper">
 <div id="page">
 
-
-    <!-- School Name -->
     <h1 id="school-name">Recent</h1>
     <!--Message Feed-->
     <div id="feed">
@@ -53,9 +51,9 @@
                 
                 <!-- feed entry for each message -->
                 <div class="message">
-                    Dear <a id="target-name" href="/target/<%= message.target.id %>/recent"><%= message.target.name %></a>,
+                    Dear <a id="target-name" href="/target/<%= message.target.id%>/recent"><%= message.target.name %></a>,
                     <span id="school-name">at 
-                        <a href = "/school/<% message.school.id %>/recent"> School Name Here <!-- <% message.school.name %> --> </a>
+                        <a href = "/school/<%= message.school.id %>/recent"> <%= message.school["name"] %> </a>
                     </span>
 
                     <span class="message-body"> <%= message.body %></span>
