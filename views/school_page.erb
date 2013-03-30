@@ -57,15 +57,18 @@
                 
                 <!-- feed entry for each message -->
                 <div class="message">
-                    Dear <a id="target-name" href="/target/<%= message.target.id %>/recent"><%= message.target.name %></a>,
+                    Dear <a class="target-name" href="/target/<%= message.target.id %>/recent"><%= message.target.name %></a>,
 
                     <span class="message-body"> <%= message.body %></span>
 
                     <div class="message-bottom-bar">
                         <span class="timestamp"><%= format_timestamp(message.created_at) %></span>
                         <span class="message-controls">
-                        <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
-                        Buzz Up! (<%= message.likes %>)</a> | 
+                        <form class="like-form" method="post" action="/like/<%=message['id']%>" style="display:inline;">
+                            <button class="like-button" data-message-id="<%= message['id'] %>" type="submit">Buzz Up! (<span class="likes"><%= message.likes %></span>)</button>
+                        </form> |
+                        <!-- <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
+                        Buzz Up! (<%= message.likes %>)</a> | -->
                         <a href="#">Comment</a> | 
                         <a href ="#">Abuse</a>
                         </span>
@@ -91,26 +94,11 @@
 
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- script to make ajax call to '/like/messageId' when like button is clicked -->
-    <script type="text/javascript">
-        $(".like_button").click(function() {
-            var messageid = $(this).data("messageid");
-            $.get("/like/" + messageid);
 
-        });
-    // set classname of currently selected sorting option
-    // to 'current-sort'
-    var sortLinks = $("#sort a");
-    for (var i = 0; i < sortLinks.length; i++) {
-        if (sortLinks[i].pathname === window.location.pathname) {
-            sortLinks.eq(i).addClass('current-sort');
-        }
-    }
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/eve.js/0.8.1/eve.min.js">
     </script>
-    <!-- Following Sidebar
-    <script type="text/javascript" src="js/sidbar.js"></script>
-    -->
+    <script src="/js/school_page.js"></script>
 
 </body>
 </html>

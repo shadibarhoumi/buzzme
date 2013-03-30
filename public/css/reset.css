@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -23,6 +23,20 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+button {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	width: auto;
+	overflow: visible;
+	display: inline;
+}
+
+
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

@@ -165,16 +165,19 @@ get "/about" do
 	erb :aboutme
 end
 
-get "/like/:message_id" do
+post "/like/:message_id" do
 	message = Message.get(params["message_id"])
 
 	if !message.nil?
 		# if message exists, increment likes by 1 [update() saves automatically]
 		message.update(likes: message.likes + 1)
+
+		if request.xhr?
+			return message.likes.to_s
+		else
+			## basically refresh page to reflect change in likes
+		end
 	else
 		erb :not_found
 	end
-
-	# TODO: provide return url for redirection if javascript isn't enabled
-	#redirect to("/#{message["url_name"]}/recent")
 end

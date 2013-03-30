@@ -1,13 +1,30 @@
+body {
+    line-height: 1.5em;
+
+}
+
 form {
     margin: 0px;
 }
 
-a {
+a, button {
     color: #08c;
+    font-size: inherit;
     text-decoration: none;
+    padding: 0px;
+    margin: 0px;
 }
 
-a:hover {
+a.disabled, button.disabled {
+    color: #A9A9A9;
+}
+
+a.disabled:hover, button.disabled:hover {
+    color: #A9A9A9;
+    cursor: default;
+}
+
+a:hover, button:hover {
     color: red;
     text-decoration: none;
 }
@@ -120,12 +137,12 @@ div#sort a.current-sort {
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
 }
 
-#target-name {
+.target-name {
     font-weight: 900;
     color: #333399;
 }
 
-#target-name:hover {
+.target-name:hover {
     color: green;
 }
 
