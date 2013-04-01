@@ -134,10 +134,6 @@ h1#breadcrumb a:hover {
     color: #333399;
 }
 
-#target-name:hover {
-    color: green;
-}
-
 .message-body {
     display: block;
     font-weight: 500;

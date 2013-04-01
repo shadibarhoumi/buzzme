@@ -43,6 +43,28 @@ textarea {
     resize: none;
 }
 
+a, button {
+    color: #08c;
+    font-size: inherit;
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+a.disabled, button.disabled {
+    color: #A9A9A9;
+}
+
+a.disabled:hover, button.disabled:hover {
+    color: #A9A9A9;
+    cursor: default;
+}
+
+a:hover, button:hover {
+    color: red;
+    text-decoration: none;
+}
+
 /*Navigation Bar Rules*/
 .navbar-fixed-top {
 	margin: 0px;

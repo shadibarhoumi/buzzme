@@ -62,8 +62,10 @@
                     <div class="message-bottom-bar">
                         <span class="timestamp"><%= format_timestamp(message.created_at) %></span>
                         <span class="message-controls">
-                        <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
-                        Buzz Up! (<%= message.likes %>)</a> | 
+                         <form class="like-form" method="post" action="/like/<%=message['id']%>" style="display:inline;">
+                            <button class="like-button" data-message-id="<%= message['id'] %>" type="submit">Buzz Up! (<span class="likes"><%= message.likes %></span>)</button>
+                            <input type="hidden" name="return" value="/feed">
+                        </form> | 
                         <a href="#">Comment</a> | 
                         <a href ="#">Abuse</a>
                         </span>
@@ -79,6 +81,7 @@
 
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/eve.js/0.8.1/eve.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="/js/sort-links.js"></script>
     <script src="/js/like-button.js"></script>

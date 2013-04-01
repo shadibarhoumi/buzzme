@@ -9,7 +9,6 @@ Eve.scope('#feed', function() {
 
         // constrcut ajax url by getting value of data-message-id
         var url = '/like/' + $(e.target).data('message-id');
-
         $.ajax({
             type: 'POST',
             url: url,
