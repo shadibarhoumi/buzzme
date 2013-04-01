@@ -103,10 +103,10 @@ get "/school/:school_id/:sort" do
 	end
 end
 
-get "/school/all" do
+get "/feed" do
 	@messages = Message.all(order: [:created_at.desc])
 	
-	erb :all_school_page
+	erb :all_school_feed
 end
 
 post "/school/:school_id/*" do

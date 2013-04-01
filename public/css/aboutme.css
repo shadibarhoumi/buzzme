@@ -1,6 +1,5 @@
 body {
 	text-align: center;
-    font-family: 'Open Sans', sans-serif;
 }
 p {
 	padding-bottom: 10px;
@@ -19,6 +18,7 @@ p {
 	padding-left: 0px;
 	padding-right: 0px;
 	width: 500px;
+	background: orange;
 /*	background-image: -webkit-linear-gradient(top, #FFFFFF, #FFFFE6);
 	background-image: -moz-linear-gradient(top, #FFFFFF, #FFFFE6);
 */	bottom: 50px;
