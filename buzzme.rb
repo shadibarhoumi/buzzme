@@ -175,7 +175,8 @@ post "/like/:message_id" do
 		if request.xhr?
 			return message.likes.to_s
 		else
-			## basically refresh page to reflect change in likes
+			# redirect using return url in form
+			redirect to(params["return"])
 		end
 	else
 		erb :not_found

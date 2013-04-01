@@ -66,6 +66,7 @@
                         <span class="message-controls">
                         <form class="like-form" method="post" action="/like/<%=message['id']%>" style="display:inline;">
                             <button class="like-button" data-message-id="<%= message['id'] %>" type="submit">Buzz Up! (<span class="likes"><%= message.likes %></span>)</button>
+                            <input type="hidden" name="return" value="/school/<%= @school.id %>/recent">
                         </form> |
                         <!-- <a class="like_button" data-messageid="<%=message['id']%>" href="/like/<%=message['id']%>">
                         Buzz Up! (<%= message.likes %>)</a> | -->
