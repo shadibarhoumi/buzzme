@@ -90,13 +90,6 @@ a:hover, button:hover {
 
 .navbar #buzzme {
     background: transparent url('/img/roughlogo2-30px.png') center left no-repeat;
-    background-repeat: no-repeat;
     padding-left: 38px;  /* width of the image plus a little extra padding */
     display: block;
-}
-
-/*Background Image*/
-body {
-    background-image: url('http://www.desktopwallpaperhd.net/wallpapers/17/6/blue-vector-clouds-devianart-nkspace-175270.jpg');
-    background-attachment: fixed;
 }
