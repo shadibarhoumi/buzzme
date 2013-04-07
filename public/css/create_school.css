@@ -4,6 +4,9 @@ body {
 h1 {
 	padding-top: 50px;
 }
+p {
+	padding-top: 100px;
+}
 
 #createSchoolForm {
 	display: block;

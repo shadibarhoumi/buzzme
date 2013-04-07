@@ -42,9 +42,13 @@
 <div id="wrapper">
 <div id="page">
 
-
-    <!-- School Name -->
     <h1>Live Feed</h1>
+
+    <!-- Sorting -->
+    <div id="sort">
+        Sort by: <a href="/feed/recent">Most Recent</a> | <a href="/feed/trending">Most Popular</a>
+    </div>
+
     <!--Message Feed-->
     <div id="feed">
 
@@ -54,7 +58,7 @@
                 <div class="message">
                     Dear <a id="target-name" href="/target/<%= message.target.id %>/recent"><%= message.target.name %></a>,
                     <span id="school-name">
-                        <a href = "/school/<%= message.school.id %>/recent"><%= message.school.name %></a>
+                        at <a href = "/school/<%= message.school.id %>/recent"><%= message.school.name %></a>
                     </span>
 
                     <span class="message-body"> <%= message.body %></span>

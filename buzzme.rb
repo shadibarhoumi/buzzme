@@ -103,9 +103,13 @@ get "/school/:school_id/:sort" do
 	end
 end
 
-get "/feed" do
-	@messages = Message.all(order: [:created_at.desc])
-	
+get "/feed/:sort" do
+	if params["sort"] == "recent"
+		@messages = Message.all(order: [:created_at.desc])
+	elsif params["sort"] == "trending"
+		@messages = Message.all(order: [:likes.desc])
+	end
+		
 	erb :all_school_feed
 end
 
@@ -118,6 +122,7 @@ post "/school/:school_id/*" do
 	target = Target.first_or_create(name: target_name, school: school)
 
 	# TODO: validate that message is not empty...
+	# TODO: preserve formatting of message body (paragraphs)
 	Message.create(body: params["message"], target: target, school: school)
 
 	redirect to("/school/#{params["school_id"]}/recent")

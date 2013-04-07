@@ -42,12 +42,9 @@ div#sort {
     /*TODO: how not to specify fixed width?*/
     width: 250px;
 }
-
-
 div#sort a:hover {
     color: yellow;
 }
-
 div#sort a.current-sort {
     color: yellow;
 }
